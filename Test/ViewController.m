@@ -26,14 +26,14 @@ static const int pageCount = 3;
     [super viewDidAppear:YES];
     
     CGFloat W = self.scrollView.bounds.size.width;
-    for (int i = 1; i<4; i++) {
-        UIImageView *imageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"new_feature_%zd",i]]];
+    for (int i = 0; i<pageCount; i++) {
+        UIImageView *imageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"new_feature_%zd",i+1]]];
         imageView.contentMode = UIViewContentModeScaleToFill;
         [self.scrollView addSubview:imageView];
         
         [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(self.scrollView.mas_top);
-            make.left.mas_equalTo(self.scrollView.mas_left).offset((i-1)*W);
+            make.left.mas_equalTo(self.scrollView.mas_left).offset(i*W);
             make.size.mas_equalTo(self.scrollView.bounds.size);
         }];
     }
